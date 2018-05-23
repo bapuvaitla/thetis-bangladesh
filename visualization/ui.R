@@ -190,8 +190,7 @@
                                     selected = "Same as present",
                                     choices = c("Same as present",
                                                 "Increased price"))
-      )
-      ),
+      )),
     mainPanel(
       conditionalPanel(
         # Ecological model, only appears for total fish harvest
@@ -202,7 +201,9 @@
         actionButton("toggle", "Hide/show table"),
         br(),
         br(),
-        DT::dataTableOutput("eco_totals_table")
+        DT::dataTableOutput("eco_totals_table"),
+        # Download button
+        downloadButton("downloadData", "Download")
       ),
       conditionalPanel(
         # Ecological model, only appears for individual fish groups
@@ -211,9 +212,11 @@
         br(),
         br(),
         actionButton("toggle2", "Hide/show table"),
+                br(),
         br(),
-        br(),
-        DT::dataTableOutput("eco_group_table")
+        DT::dataTableOutput("eco_group_table"),
+        # Download button
+        downloadButton("downloadData2", "Download")
       ),
       conditionalPanel(
         # Market model, only appears for market totals results
@@ -224,7 +227,9 @@
         actionButton("toggle3", "Hide/show table"),
         br(),
         br(),
-        DT::dataTableOutput("market_totals_table")
+        DT::dataTableOutput("market_totals_table"),
+        # Download button
+        downloadButton("downloadData3", "Download")
       ),
       conditionalPanel(
         # Market model, only appears for market fish group results
@@ -235,7 +240,9 @@
         actionButton("toggle4", "Hide/show table"),
         br(),
         br(),
-        DT::dataTableOutput("market_group_table")
+        DT::dataTableOutput("market_group_table"),
+        # Download button
+        downloadButton("downloadData4", "Download")
       ),
       conditionalPanel(
         # Nutritional model
@@ -247,7 +254,9 @@
         actionButton("toggle5", "Hide/show table"),
         br(),
         br(),
-        DT::dataTableOutput("fd_nutrient_intake_table")
+        DT::dataTableOutput("fd_nutrient_intake_table"),
+        # Download button
+        downloadButton("downloadData5", "Download")
       )
     )
   )
