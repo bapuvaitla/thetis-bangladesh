@@ -94,6 +94,17 @@
       toggle("eco_totals_table")
     })
     
+    # Data to download with download button
+    output$downloadData <- downloadHandler(
+      filename = function() {
+        paste("TableDownload", ".csv", sep = "")
+      },
+      content = function(file) {
+        write.csv(totals_filtered(), file, row.names = FALSE)
+      }
+    )
+    
+    
     output$eco_group_plot <- renderPlot({
       ggplot(groups_filtered()) + 
         geom_line(aes(x = year,
@@ -114,6 +125,16 @@
     observeEvent(input$toggle2, {
       toggle("eco_group_table")
     })
+    
+    # Data to download with download button
+    output$downloadData2 <- downloadHandler(
+      filename = function() {
+        paste("TableDownload", ".csv", sep = "")
+      },
+      content = function(file) {
+        write.csv(groups_filtered(), file, row.names = FALSE)
+      }
+    )
     
     output$market_totals_plot <- renderPlot({ 
       ggplot(market_totals_filtered()) +
@@ -143,6 +164,16 @@
       toggle("market_totals_table")
     })
     
+    # Data to download with download button
+    output$downloadData3 <- downloadHandler(
+      filename = function() {
+        paste("TableDownload", ".csv", sep = "")
+      },
+      content = function(file) {
+        write.csv(market_totals_filtered(), file, row.names = FALSE)
+      }
+    )
+    
     output$market_group_plot <- renderPlot({
       ggplot(market_groups_filtered()) + 
         geom_line(aes(x = year,
@@ -168,6 +199,16 @@
       toggle("market_group_table")
     })
     
+    # Data to download with download button
+    output$downloadData4 <- downloadHandler(
+      filename = function() {
+        paste("TableDownload", ".csv", sep = "")
+      },
+      content = function(file) {
+        write.csv(market_groups_filtered(), file, row.names = FALSE)
+      }
+    )
+    
     output$fd_nutrient_intake_plot <- renderPlot({
       ggplot(fd_nutrient_intake_filtered()) +
         geom_line(aes(x = year_nut,
@@ -188,5 +229,15 @@
       toggle("fd_nutrient_intake_table")
     })
     
+    # Data to download with download button
+    output$downloadData5 <- downloadHandler(
+      filename = function() {
+        paste("TableDownload", ".csv", sep = "")
+      },
+      content = function(file) {
+        write.csv(fd_nutrient_intake_filtered(), file, row.names = FALSE)
+      }
+    )
     
   }
+  
